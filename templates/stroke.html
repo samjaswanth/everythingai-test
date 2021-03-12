@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>everythingai.in</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <h2>EverythingAi</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a href="">Stroke Prediction</a></li>
+      <li><a href="#">Crop Prediction</a></li>
+      <li><a href="#">Whom do you look like</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1>Predict whether you are vulnerable to stroke</h1>
+    <div class="login">
+   	<h1>Check the occurence of Stroke</h1>
+   	<br>
+
+        <!-- Main Input For Receiving Query to our ML -->
+       <form action="{{ url_for('predict')}}"method="post"><center>
+       	<input type="text" name="gender" placeholder="gender" required="required" />
+           <input type="text" name="age" placeholder="Age" required="required" />
+   		<input type="text" name="hypertension" placeholder="Hypertension" required="required" />
+   		<input type="text" name="heart_disease" placeholder="Heart disease" required="required" />
+   		<input type="text" name="ever_married" placeholder="Ever married" required="required" />
+   		<input type="text" name="work_type" placeholder="Work Type" required="required" />
+   		<input type="text" name="Residence_type" placeholder="Residence_type" required="required" />
+   		<input type="text" name="avg_glucose_level" placeholder="Average glucose level" required="required" />
+           <input type="text" name="bmi" placeholder="bmi" required="required" />
+           <input type="text" name="smoking_status" placeholder="Smoking Status" required="required" /></center>
+
+
+           <br><center><button type="submit" class="button_predict">Predict</center></button></br>
+       </form>
+
+      <br>
+      <br>
+      <center><b><h2>{{ prediction_text }}</b></h2></center>
+
+    </div>
+</section>
+<br>
+<br>
+<footer>
+</footer>
+
+</body>
+</html>
