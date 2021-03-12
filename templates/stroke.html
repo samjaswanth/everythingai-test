@@ -67,6 +67,30 @@ footer {
     height: auto;
   }
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
 </style>
 </head>
 <body>
@@ -77,6 +101,7 @@ footer {
 <section>
   <nav>
     <ul>
+		<li><a class = "active" href="/">Home</a></li>
       <li><a href="{{url_for('stroke')}}">Stroke Prediction</a></li>
       <li><a href="#">Crop Prediction</a></li>
       <li><a href="#">Whom do you look like</a></li>
@@ -84,9 +109,8 @@ footer {
   </nav>
   
   <article>
-    <h1>Predict whether you are vulnerable to stroke</h1>
+    <h1><center>Predict whether you are vulnerable to stroke<center></h1>
     <div class="login">
-   	<h1>Check the occurence of Stroke</h1>
    	<br>
 
         <!-- Main Input For Receiving Query to our ML -->
