@@ -115,18 +115,17 @@ li a:hover:not(.active) {
 
      <!-- Main Input For Receiving Query to our ML -->
     <center><form action="{{ url_for('predictcrop')}}"method="post">
-    	<input type="text" name="N" placeholder="Nitrogen" required="required" />
-        <input type="text" name="P" placeholder="Phosporus" required="required" />
-		<input type="text" name="K" placeholder="Potassium" required="required" />
-		<input type="text" name="temperature" placeholder="Temperature" required="required" />
-		<input type="text" name="humidity" placeholder="Humidity" required="required" />
-		<input type="text" name="ph" placeholder="Ph" required="required" />
-		<input type="text" name="rainfall" placeholder="Rainfall" required="required" />
+    	<input type="text" name="N" placeholder="Nitrogen in soil" required="required" />
+        <input type="text" name="P" placeholder="Phosporus in soil" required="required" />
+		<input type="text" name="K" placeholder="Potassium in soil" required="required" />
+		<input type="text" name="temperature" placeholder="Temperature(°C)" required="required" />
+		<input type="text" name="humidity" placeholder="RelaHumidity in %" required="required" />
+		<input type="text" name="ph" placeholder="Ph of soil" required="required" />
+		<input type="text" name="rainfall" placeholder="Rainfall(mm)" required="required" />
 		<br>
 		<br>
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button></center>
     </form>
-
    <br>
    <br>
    {{ prediction_text }}
