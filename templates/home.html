@@ -15,26 +15,69 @@ body {
 
 /* Style the header */
 header {
-  background-color: #666;
+  background-color: #eb0729;
   padding: 30px;
   text-align: center;
   font-size: 35px;
   color: white;
 }
 
-/* Create two columns/boxes that floats next to each other */
-nav {
-  float: left;
-  width: 30%;
-  height: 300px; /* only for demonstration, should be removed */
-  background: #ccc;
-  padding: 20px;
+.navbar {
+  overflow: hidden;
+  background-color: #333; 
 }
 
-/* Style the list inside the menu */
-nav ul {
-  list-style-type: none;
-  padding: 0;
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: red;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
 }
 
 article {
@@ -94,28 +137,48 @@ li a:hover:not(.active) {
 </style>
 </head>
 <body>
+<div class="navbar">
+  <a href="/">Home</a>
+  <div class="subnav">
+    <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="#company">Company</a>
+      <a href="#team">Team</a>
+      <a href="#careers">Careers</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Projects<i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="{{url_for('stroke')}}">Stroke Prediction</a>
+      <a href="{{url_for('crop')}}">Crop Prediction</a>
+      <a href="#package">Whom do you look like!</a>
+      <a href="#express">Know your worth</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Partners <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="#link1">Link 1</a>
+      <a href="#link2">Link 2</a>
+      <a href="#link3">Link 3</a>
+      <a href="#link4">Link 4</a>
+    </div>
+  </div>
+  <a href="#contact">Contact</a>
+</div>
 <header>
   <h2>EverythingAi</h2>
 </header>
 
 <section>
-  <nav>
-    <ul>
-		<li><a class='active' href="/">Home</a></li>
-      <li><a href="{{url_for('stroke')}}">Stroke Prediction</a></li>
-      <li><a href="{{url_for('crop')}}">Crop Prediction</a></li>
-      <li><a href="#">Whom do you look like</a></li>
-    </ul>
-  </nav>
-  
-  <article>
+  <p><h2>All about our work and play</h2></p>
     <h1>Developed By</h1>
     <p>Jaswanth S</p>
-  </article>
 </section>
 
 <footer>
-  <p>Footer</p>
+  <p>Copyright © 2019 EverythingAi</p>
 </footer>
 
 </body>
