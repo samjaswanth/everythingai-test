@@ -17,18 +17,26 @@ def stroke():
 
 @app.route('/predict',methods=['POST'])
 def predict():
+    try:
+        
+        int_features = [float(x) for x in request.form.values()]
+        final_features = [np.array(int_features)]
+        prediction = model_stroke.predict(final_features)
+        output = prediction[0]
     
-    int_features = [float(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
-    prediction = model_stroke.predict(final_features)
-    output = prediction[0]
+        if output == 1 :
+            return render_template('stroke.html', prediction_text="Please See a Doctor!! You have an high chance of getting a stroke")
     
-    if output == 1 :
-        return render_template('stroke.html', prediction_text="Please See a Doctor!! You have an high chance of getting a stroke")
-    
-    else:
+        else:
 
-        return render_template('stroke.html', prediction_text="Be happy! You have lesss probability of occurance of stroke")
+            return render_template('stroke.html', prediction_text="Be happy! You have lesss probability of occurance of stroke")
+        
+    except ValueError:
+            
+        return render_template('stroke.html', prediction_text="Enter only numerical values")
+            
+    except Exception:
+        return render_template('stroke.html',prediction_text="There is some problem with the system. Try to reload or Kindly bare with us until we resolve")
 
 @app.route('/crop')
 def crop():
@@ -36,14 +44,19 @@ def crop():
 
 @app.route('/predictcrop',methods=['POST'])
 def predictcrop():
+    try :
+        int_features = [float(x) for x in request.form.values()]
+        final_features = [np.array(int_features)]
+        prediction = model_crop.predict(final_features)
+        output = prediction[0]
+        
+        return render_template('crop.html', prediction_text="The crop which you can grow is {}".format(output))
     
-    int_features = [float(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
-    prediction = model_crop.predict(final_features)
-    output = prediction[0]
-
-    return render_template('crop.html', prediction_text="The crop which you can grow is {}".format(output))
-           
+    except ValueError:
+        return render_template('crop.html', prediction_text="Enter only numerical values")
+    
+    except Exceptions:
+        return render_template('crop.html',prediction_text="There is some problem with the system. Try to reload or Kindly bare with us until we resolve")
 if __name__ == "__main__":
     app.run(debug=True)
 #if __name__=="__main__":
